@@ -1,35 +1,3 @@
-# from flask import Flask,request,render_template # type: ignore
-# app =Flask(__name__)
-
-# # Python main
-# if __name__=="__main__":
-#     app.run(debug=True)
-
-# # creating routes========================================
-
-
-# @app.route("/")
-# def index():
-#     return render_template("index.html")
-
-# @app.route("/about")
-# def about():
-#     return render_template("about.html")
-
-# @app.route("/contact")
-# def contact():
-#     return render_template("contact.html")
-
-# @app.route("/about")
-# def about():
-#     return render_template("about.html")
-
-# if __name__ == '__main__':
-
-#     app.run(debug=True)
-
-
-
 from flask import Flask, request, render_template, jsonify  # Import jsonify
 import numpy as np
 import pandas as pd
@@ -51,7 +19,7 @@ diets = pd.read_csv("datasets/diets.csv")
 
 
 # load model===========================================
-svc = pickle.load(open('models/svc.pkl','rb'))
+svc = pickle.load(open('Model/svc.pkl','rb'))
 
 
 #============================================================
@@ -95,18 +63,6 @@ def get_predicted_value(patient_symptoms):
 def index():
     return render_template("index.html")
 
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
-
-@app.route("/blog")
-def blog():
-    return render_template("blog.html")
-
 # Define a route for the home page
 @app.route('/predict', methods=['GET', 'POST'])
 def home():
@@ -139,21 +95,21 @@ def home():
 
 
 
-# about view function and path
+# about view funtion and path
 @app.route('/about')
 def about():
     return render_template("about.html")
-# contact view function and path
+# contact view funtion and path
 @app.route('/contact')
 def contact():
     return render_template("contact.html")
 
-# developer view function and path
+# developer view funtion and path
 @app.route('/developer')
 def developer():
     return render_template("developer.html")
 
-# about view function and path
+# about view funtion and path
 @app.route('/blog')
 def blog():
     return render_template("blog.html")
@@ -161,4 +117,4 @@ def blog():
 
 if __name__ == '__main__':
 
-    app.run(debug=True)s
+    app.run(debug=True,use_reloader=False)
