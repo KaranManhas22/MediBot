@@ -106,11 +106,6 @@
 
 
 
-
-
-
-    {% if predicted_disease %}
-
     <!-- Results -->
     <h1 class="text-center my-4 mt-4">Our AI System Results</h1>
     <div class="container">
@@ -132,7 +127,6 @@
         </div>
     </div>
 
-{% endif %}
 
     <!-- Disease Modal -->
     <div class="modal fade" id="diseaseModal" tabindex="-1" aria-labelledby="diseaseModalLabel" aria-hidden="true">
@@ -148,7 +142,7 @@
                     {% if predicted_disease %}
                     <h3>Predicted Disease: {{ predicted_disease }}</h3>
                     <p>{{ dis_des }}</p>
-
+                     {% endif }
                 </div>
             </div>
         </div>
