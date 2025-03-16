@@ -1,12 +1,21 @@
+<!-- Front end has to be changed once fully completed and we'll make it more attractive using Tailwind CSS  -->
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Health Care Center</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   </head>
-
   <style>
 
         .logo {
@@ -16,58 +25,212 @@
             margin-top: 0;
             margin-left: 2px;
         }
-
         .myimg {
             width: 50px;
             height: 50px;
             border: 2px solid black;
             border-radius: 25px;
         }
-
-
-
-
     </style>
 </head>
 <body>
+    <div
+    class="background bg-gradient-to-r from-indigo-400 via-purple-700 to-pink-400 hover:bg-gradient-to-t hover:bg-gradient-to-r hover:from-pink-200 hover:via-purple-500 hover:to-indigo-400"
+  >
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <!-- Logo at the top-left corner -->
-            <div class="logo">
-                <img class="myimg" src="{{ url_for('static', filename='img.png') }}" alt="">
-            </div>
+    <nav
+    class="fixed w-full bg-white/10 backdrop-blur-lg border-b border-black/10 z-10"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <img
+          src="/GYM-Project/static/img.png"
+          alt=""
+          class="w-15 h-14 object-cover rounded-3xl"
+        />
 
-            <a class="navbar-brand" href="#">Health Center</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/developer">Developer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/blog">Blog</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-6">
+          <a
+            href="#"
+            class="text-white hover:text-pink-400 transition-colors"
+            >Home</a
+          >
+          <a
+            href="#ourproduct"
+            class="text-white hover:text-pink-400 transition-colors"
+            >Products</a
+          >
+          <a
+            href="#"
+            class="text-white hover:text-pink-400 transition-colors"
+            >About</a
+          >
+          <a
+            href="#contactus"
+            class="text-white hover:text-pink-400 transition-colors"
+            >Contact</a
+          >
+          <button
+            class="bg-pink-400/20 backdrop-blur-md text-white px-6 py-2 rounded-full hover:bg-pink-400/30 transition-colors border border-pink-200/20"
+          >
+            <i class="fa-solid fa-cart-shopping" style="color: #ffffff"></i>
+          </button>
         </div>
-    </nav>
 
+        <!-- Mobile Menu Button -->
+        <button
+          id="menuBtn"
+          class="md:hidden text-white hover:text-pink-400"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobileMenu"
+      class="hidden md:hidden absolute w-full bg-white/10 backdrop-blur-lg border-b border-white/10"
+    >
+      <div class="px-2 py-3 space-y-2">
+        <a
+          href="#"
+          class="block text-white px-3 py-2 hover:bg-white/10 rounded-md"
+          >Home</a
+        >
+        <a
+          href="#"
+          class="block text-white px-3 py-2 hover:bg-white/10 rounded-md"
+          >Products</a
+        >
+        <a
+          href="#"
+          class="block text-white px-3 py-2 hover:bg-white/10 rounded-md"
+          >About</a
+        >
+        <a
+          href="#"
+          class="block text-white px-3 py-2 hover:bg-white/10 rounded-md"
+          >Contact</a
+        >
+      </div>
+    </div>
+  </nav>
+
+
+
+   <!-- Carousel starts here -->
+   <div class="relative w-full mx-auto">
+    <!-- Carousel Container -->
+    <div id="carousel" class="relative overflow-hidden">
+      <div
+        class="flex transition-transform duration-700 ease-in-out"
+        style="transform: translateX(0)"
+      >
+        <!-- Slide 1 -->
+        <div class="w-full flex-shrink-0">
+          <!-- Desktop Image -->
+          <img
+            src="/GYM-Project/static/Screenshot (363).png"
+            alt="Desktop Slide 1"
+            class="hidden sm:block w-full h-[32rem] rounded-lg"
+          />
+          <!-- Mobile Image -->
+          <img
+            src="/GYM-Project/static/Screenshot (222).png"
+            alt="Mobile Slide 1"
+            class="block sm:hidden w-full h-auto rounded-lg"
+          />
+        </div>
+        <!-- Slide 2 -->
+        <div class="w-full flex-shrink-0">
+          <!-- Desktop Image -->
+          <img
+            src="/GYM-Project/static/Screenshot (223).png"
+            alt="Desktop Slide 2"
+            class="hidden sm:block w-full h-[32rem] rounded-lg"
+          />
+          <!-- Mobile Image -->
+          <img
+            src="/GYM-Project/static/Screenshot (363).png"
+            alt="Mobile Slide 2"
+            class="block sm:hidden w-full h-auto rounded-lg"
+          />
+        </div>
+        <!-- Slide 3 -->
+        <div class="w-full flex-shrink-0">
+          <!-- Desktop Image -->
+          <img
+            src="/GYM-Project/static/Screenshot (223).png"
+            alt="Desktop Slide 3"
+            class="hidden sm:block w-full h-[32rem] rounded-lg"
+          />
+          <!-- Mobile Image -->
+          <img
+            src="/GYM-Project/static/Screenshot (222).png"
+            alt="Mobile Slide 3"
+            class="block sm:hidden w-full h-auto rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Previous Button -->
+    <button
+      id="prev"
+      class="absolute top-1/2 -translate-y-1/2 left-4 z-10 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 focus:outline-none"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"
+        />
+      </svg>
+    </button>
+
+    <!-- Next Button -->
+    <button
+      id="next"
+      class="absolute top-1/2 -translate-y-1/2 right-4 z-10 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 focus:outline-none"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"
+        />
+      </svg>
+    </button>
+  </div>
+  <!-- Carousel Ends here -->
 
 
 
@@ -99,12 +262,6 @@
 </div>
 
 
-
-
-
-
-
-
 {% if predicted_disease %}
 
 <!-- Results -->
@@ -132,7 +289,7 @@
                     <h5 class="modal-title" id="diseaseModalLabel">Predicted Disease</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" style="background-color: #modal-body-color;"> <!-- Set modal body background color inline -->
+                <div class="modal-body" style="background-color: burlywood"> <!-- Set modal body background color inline -->
                     <p>{{ predicted_disease }}</p>
                 </div>
             </div>
@@ -173,9 +330,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     <!-- Medications Modal -->
     <div class="modal fade" id="medicationsModal" tabindex="-1" aria-labelledby="medicationsModalLabel" aria-hidden="true">
@@ -258,9 +412,17 @@
 
         recognition.start();
     }
+    
 </script>
-
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 
 </html>
+<<<<<<< Updated upstream
+=======
+
+
+
+<!-- Front end has to be changed once fully completed and we'll make it more attractive using Tailwind CSS  -->
+>>>>>>> Stashed changes
