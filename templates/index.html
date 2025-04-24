@@ -352,20 +352,21 @@
               >Features</a
             >
             <a
-              href="#how-it-works"
+              href="#test"
               class="text-white hover:text-indigo-200 transition-colors font-medium"
               >How It Works</a
             >
             <a
-              href="#contact"
               class="text-white hover:text-indigo-200 transition-colors font-medium"
+              href="#contact"
               >Contact</a
             >
-            <button
+            <a
+            href="#symptom-checker"
               class="bg-white text-indigo-600 px-6 py-2 rounded-full font-medium hover:bg-indigo-100 transition-colors"
             >
               Get Started
-            </button>
+          </a>
           </div>
 
           <!-- Mobile Menu Button -->
@@ -524,7 +525,7 @@
     </section>
 
     <!-- Symptom Checker Form -->
-    <section class="pb-20 px-4 sm:px-6 lg:px-8">
+    <section  class="pb-20 px-4 sm:px-6 lg:px-8" id="symptom-checker">
       <div class="max-w-3xl mx-auto">
         <div class="bg-white rounded-xl shadow-2xl p-8">
           <h2 class="text-2xl font-bold text-gray-800 mb-6">Symptom Checker</h2>
@@ -568,7 +569,7 @@
               type="submit"
               
               class="w-full py-3 px-6 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all transform hover:scale-[1.02]"
-            src="test"
+            src="test"href="test"
               >
               Analyze Symptoms
             </button>
@@ -579,7 +580,7 @@
 
     <!-- Results Section -->
     {% if predicted_disease %}
-    <div class="test">
+    <div class="test" id="test">
     <section class="pb-20 px-4 sm:px-6 lg:px-8">
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-12">
@@ -816,7 +817,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+    <footer class="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8" id="contact">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -1000,7 +1001,7 @@
 
         recognition.onend = function () {
           startSpeechRecognitionButton.innerHTML =
-            '<i class="fas fa-microphone mr-2"></i> Voice Input';
+            '<i class="fas fa-microphone mr-2"></i> Voice Input'; 
           startSpeechRecognitionButton.classList.remove(
             "bg-red-100",
             "text-red-700"
