@@ -61,6 +61,8 @@ def get_predicted_value(patient_symptoms):
         else:
             missing_symptoms.append(item)  # Track missing symptoms
 
+    # Debugging: Print the input vector and missing symptoms
+    print(f"Input Vector: {input_vector}")
     if missing_symptoms:
         print(f"Warning: The following symptoms were not found: {', '.join(missing_symptoms)}")
     
@@ -83,7 +85,7 @@ def home():
         symptoms = request.form.get('symptoms')
         print(symptoms)
         if not symptoms or symptoms.strip().lower() == "symptoms":
-            message = "Please either write symptoms or you have written misspelled symptoms"
+            message = "Please either write symptoms or you have written misspelled symptoms."
             return render_template('index.html', message=message)
         else:
             # Split the user's input into a list of symptoms (assuming they are comma-separated)
