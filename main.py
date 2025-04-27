@@ -83,30 +83,41 @@ def index():
 def home():
     if request.method == 'POST':
         symptoms = request.form.get('symptoms')
-        print(symptoms)
+        print(f"Symptoms received: {symptoms}")
         if not symptoms or symptoms.strip().lower() == "symptoms":
             message = "Please either write symptoms or you have written misspelled symptoms."
             return render_template('index.html', message=message)
         else:
-            # Split the user's input into a list of symptoms (assuming they are comma-separated)
-            user_symptoms = [s.strip() for s in symptoms.split(',')]
-            # Remove any extra characters, if any
-            user_symptoms = [symptom.strip("[]' ") for symptom in user_symptoms]
-            
-            # Predict the disease
             try:
+                # Process symptoms
+                user_symptoms = [s.strip() for s in symptoms.split(',')]
+                user_symptoms = [symptom.strip("[]' ") for symptom in user_symptoms]
+                print(f"Processed symptoms: {user_symptoms}")
+
+                # Predict the disease
                 predicted_disease = get_predicted_value(user_symptoms)
+                print(f"Predicted disease: {predicted_disease}")
+
+                # Get additional details about the disease
                 dis_des, precautions, medications, rec_diet, workout = helper(predicted_disease)
+                print(f"Disease description: {dis_des}")
 
-                my_precautions = []
-                for i in precautions[0]:
-                    my_precautions.append(i)
+                my_precautions = [i for i in precautions[0]]
 
-                return render_template('index.html', predicted_disease=predicted_disease, dis_des=dis_des,
-                                       my_precautions=my_precautions, medications=medications, my_diet=rec_diet,
-                                       workout=workout)
+                # Pass the predicted disease and other details to the template
+                return render_template(
+                    'index.html',
+                    predicted_disease=predicted_disease,
+                    dis_des=dis_des,
+                    my_precautions=my_precautions,
+                    medications=medications,
+                    my_diet=rec_diet,
+                    workout=workout,
+                    show_map=True  # Flag to show the map
+                )
             except Exception as e:
                 message = f"Error: {str(e)}"
+                print(message)
                 return render_template('index.html', message=message)
 
     return render_template('index.html')
@@ -134,6 +145,10 @@ def developer():
 @app.route('/blog')
 def blog():
     return render_template("blog.html")
+
+@app.route('/map')
+def map_view():
+    return render_template('map.html')
 
 
 if __name__ == '__main__':
