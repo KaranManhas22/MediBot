@@ -8,6 +8,10 @@ import pickle
 app = Flask(__name__)
 
 
+@app.route('/map')
+def map():
+    return render_template('map.html')
+
 
 # load databasedataset===================================
 sym_des = pd.read_csv("datasets/symtoms_df.csv")
