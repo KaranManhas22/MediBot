@@ -1,9 +1,27 @@
-// Preloader
-window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.querySelector('[data-preloader]').remove();
-    }, 1000); // 1 second delay after page load
-  });
+/**
+ * PRELOAD
+ * 
+ * loading will be end after document is loaded
+ */
+
+const preloader = document.querySelector("[data-preaload]");
+
+window.addEventListener("load", function () {
+  preloader.classList.add("loaded");
+  document.body.classList.add("loaded");
+});
+
+// Add this script to hide the preloader after the page loads
+window.addEventListener("load", () => {
+  const preloader = document.querySelector(".preload");
+  if (preloader) {
+    preloader.style.display = "none";
+  }
+});
+
+/**
+ * add event listener on multiple elements
+ */
   
   // Navbar
   
