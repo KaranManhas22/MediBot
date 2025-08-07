@@ -27,6 +27,8 @@ pipeline{
             steps {
                 sh '. $VENV/bin/activate && pip freeze > requirements.txt'
                 sh '. $VENV/bin/activate && pip install -r requirements.txt'
+                sh '. $VENV/bin/activate && pip install numpy'
+                sh '. $VENV/bin/activate && pip install pandas'
                 sh '. $VENV/bin/activate && pip install flask'
                 sh '. $VENV/bin/activate && pip install scikit-learn==1.6.1'
                 sh '. $VENV/bin/activate && pip install gunicorn'
