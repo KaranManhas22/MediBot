@@ -25,6 +25,7 @@ pipeline{
         }
         stage('Install python dependencies') {
             steps {
+                sh '. $VENV/bin/activate && pip freeze > requirements.txt'
                 sh '. $VENV/bin/activate && pip install -r requirements.txt'
                 sh '. $VENV/bin/activate && pip install flask'
             }
