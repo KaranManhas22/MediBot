@@ -6,7 +6,7 @@ pipeline{
     }
 
     triggers {
-        pollSCM('H/5 * * * * *')
+        pollSCM('H/5 * * * *')
     }
 
     stages {
@@ -19,7 +19,7 @@ pipeline{
         stage('Setup Python virtual Environment') {
             steps {
                 echo 'Creating virtual environment'
-                sh 'python3 -m venv $venv'
+                sh 'python3 -m venv $VENV'
                 sh '. $VENV/bin/activate'
             }
         }
