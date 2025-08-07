@@ -28,6 +28,7 @@ pipeline{
                 sh '. $VENV/bin/activate && pip freeze > requirements.txt'
                 sh '. $VENV/bin/activate && pip install -r requirements.txt'
                 sh '. $VENV/bin/activate && pip install flask'
+                sh '. $VENV/bin/activate && pip install gunicorn'
             }
         }
         stage('run') {
